@@ -1,0 +1,97 @@
+<app-header></app-header>
+<div class="row m-0 p-3 pt-1 " style="min-height: 99vh;">
+
+  <app-search-input [filterData]="filterData"></app-search-input>
+  <br>
+  <div class="d-flex pt-3">
+    <div class="flex-grow-1">
+      <ng-container *ngFor="let item of subcategories">
+        <div class="d-inline-block p-1" *ngIf="item.category_id == filterData.category_id">
+          <input [checked]="filterData?.subcategory_ids?.includes(item.id)" #subcategoryInput
+            (change)="chooseSubCategory(item.id, subcategoryInput.checked)" type="checkbox" class="btn-check"
+            id="subcategory{{item.id}}" autocomplete="off">
+          <label class="btn btn-outline-primary w3-round-xlarge btn-sm" for="subcategory{{item.id}}">{{item.name}}</label>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="">
+      <select (change)="chooseCategory()" [(ngModel)]="filterData.category_id" style="width: 200px"
+        class="form-select p-2 w3-round-large">
+        <option value="0">{{ 'Choose Category' | trans }}</option>
+        <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
+      </select>
+    </div>
+
+  </div>
+
+  <br>
+  <div class="dividor"></div>
+  <div class="row m-0">
+
+    <div class="float-start col-lg-8 col-md-8 col-sm-12">
+      <div class="p-2">
+
+
+        <div class="row m-0">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 p-0 w3-text-red">
+            <b>
+              <ng-container *ngIf="filterData.category_id > 0">
+                {{ categoryMap[filterData.category_id]?.name }} -
+              </ng-container>
+              {{ this.contacts.length }} {{'contacts' | trans }}
+              {{'from' | trans}} {{ filterData.total_entries }} ------
+              {{ 'with_phone' | trans }} {{ filterData.with_phone }} -
+              {{ 'without_phone' | trans }} {{ filterData.without_phone }}
+            </b>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 p-0">
+            <select (change)="loadContacts()" [(ngModel)]="filterData.result_type" style="width: 200px"
+              class="form-select p-2 w3-round-large float-end">
+              <option *ngFor="let item of resultTypes" [value]="item.value">{{item.label | trans}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-display-container">
+        <ng-container *ngFor="let contact of contacts">
+          <app-contact-card-item [contact]="contact"></app-contact-card-item>
+        </ng-container>
+      </div>
+      <br>
+      <div class="w3-display-container">
+        <button [disabled]="isLoading" (click)="loadMore()" class="btn btn-primary w3-display-topmiddle"
+          style="top: -10px">
+          <span *ngIf="!isLoading">{{"Load More" | trans}}</span>
+          <span *ngIf="isLoading">
+            <i class="fa fa-spin fa-spinner"></i>
+          </span>
+        </button>
+        <div class="dividor"></div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+
+    <div class="float-start col-lg-4" *ngIf="!isMobile">
+      <ng-container *ngFor="let item of ads">
+        <app-ads-card-item [item]="item"></app-ads-card-item>
+      </ng-container>
+    </div>
+
+
+  </div>
+
+</div>
+
+<app-bottom-nav></app-bottom-nav>

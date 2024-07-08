@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://support.raqm.online",
+    "secure": false
+  }
+}

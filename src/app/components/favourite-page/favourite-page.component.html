@@ -1,0 +1,49 @@
+<app-header></app-header>
+<div class=" p-3 pt-1" style="height: 99vh;">
+
+
+  <br>
+  <div class="dividor"></div>
+  <div class="row m-0">
+
+    <div class="col-lg-8 col-md-8 col-sm-12">
+
+
+      <ng-container *ngFor="let contact of contacts">
+        <app-contact-card-item [favouriteAction]="favouriteAction" [contact]="contact"></app-contact-card-item>
+      </ng-container>
+      <br>
+      <div class="w3-display-container">
+        <button [disabled]="isLoading" (click)="loadMore()" class="btn btn-primary w3-display-topmiddle"
+          style="top: -10px">
+          <span *ngIf="!isLoading">{{"Load More" | trans}}</span>
+          <span *ngIf="isLoading">
+            <i class="fa fa-spin fa-spinner"></i>
+          </span>
+        </button>
+        <div class="dividor"></div>
+      </div>
+    </div>
+
+    <div *ngIf="!isMobile" class="col-lg-4 w3-hide-small">
+      <ng-container *ngFor="let item of ads">
+        <app-ads-card-item [item]="item"></app-ads-card-item>
+      </ng-container>
+    </div>
+
+
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+</div>
+
+
+<app-bottom-nav></app-bottom-nav>

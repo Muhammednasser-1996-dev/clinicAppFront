@@ -1,0 +1,48 @@
+.search-input {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  padding-top: 5px;
+}
+
+.search-input input {
+  border: none;
+  width: 100%;
+  border-radius: 5em;
+}
+
+.search-input input:focus {
+  outline: none;
+}
+
+.global-search-app-i-container {
+  padding: 10px;
+}
+
+.search-input-container {
+  box-shadow: 0 1px 3px rgb(60 63 66 / 32%), 0 4px 12px rgb(60 63 66 / 15%);
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.global-search-res-container {
+  height: 190px;
+  overflow: auto;
+}
+
+li {
+  padding: 0px
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.result-item:hover {
+  background-color: #dbdbdb;
+}

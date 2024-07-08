@@ -1,0 +1,60 @@
+<app-header></app-header>
+
+<div class="container">
+  <br>
+  <br>
+  <div class="modal-sm w3-modal-content m-auto">
+
+    <div class="text-center">
+      <h1 class="text-primary">
+        {{'Confirm your email' | trans}}
+      </h1>
+      <p class="w3-text-gray">
+        {{'Please enter a 4-digit code sent to your email' | trans}} {{verifyEmail}}
+      </p>
+      <br>
+      <div class="p-1">
+        <div id="form" class="p-3 mb-4">
+          <input placeholder="1" [(ngModel)]="data.n1" type="text" maxLength="1" size="1" min="0" max="9"
+            pattern="[0-9]{1}" />
+          <input placeholder="2" [(ngModel)]="data.n2" type="text" maxLength="1" size="1" min="0" max="9"
+            pattern="[0-9]{1}" />
+          <input placeholder="3" [(ngModel)]="data.n3" type="text" maxLength="1" size="1" min="0" max="9"
+            pattern="[0-9]{1}" />
+          <input placeholder="4" [(ngModel)]="data.n4" type="text" maxLength="1" size="1" min="0" max="9"
+            pattern="[0-9]{1}" />
+
+          <div class="p-4 text-center" style="direction: ltr;">
+            <b>
+              {{data.n1?? ''}}
+              {{data.n2?? ''}}
+              {{data.n3?? ''}}
+              {{data.n4?? ''}}
+            </b>
+          </div>
+
+          <div class="w3-block mt-3 p-4">
+            <button (click)="verify()" [disabled]="isLoading"
+              class="p-3 btn btn-lg bg-primary w3-block w3-text-white mb-3">
+              <span *ngIf="isLoading">
+                <i class="fa fa-spin fa-spinner"></i>
+              </span>
+              <span *ngIf="!isLoading">{{ 'verify' | trans }}</span>
+
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div><br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+
+<app-bottom-nav></app-bottom-nav>

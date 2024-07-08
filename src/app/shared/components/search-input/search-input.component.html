@@ -1,0 +1,102 @@
+<div class="search-input w3-round-xxlarge mb-5">
+  <div class="d-block search-input-container w3-round-xlarge w3-white" (blur)="toggleSearch(false)">
+    <div class="m-0">
+      <div class="d-flex">
+        <div class="" style="width: 40px">
+          <div class="cursor w3-text-gray p-3" (click)="show? closeSearch() : null">
+            <div class="fa {{ show? 'fa-close' : 'fa-search' }}"></div>
+          </div>
+        </div>
+        <div class="flex-fill pt-2">
+          <input #globalSearchInput (keyup)="search(globalSearchInput.value)" [(ngModel)]="searchValue"
+            placeholder="{{ 'advanced search' | trans }}" class="w3-input w3-round-xlarge" (click)="toggleSearch()" />
+        </div>
+        <div class="justify-content-end p-1">
+          <ng-container *ngIf="isMobile">
+            <div class="input-group m-1" style="width: 100px">
+              <button (click)="navigateToResultPage()" class="btn btn-primary" type="button">
+                <i class="fa fa-search"></i>
+              </button>
+              <button (click)="filterPage()" class="btn btn-primary" type="button">
+                <i class="fa fa-filter"></i>
+              </button>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!isMobile">
+
+            <a class="btn btn-primary m-1" (click)="navigateToResultPage()">
+              <span *ngIf="!filterData.is_loading">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </span>
+              <span *ngIf="filterData.is_loading">
+                <i class="fa fa-spinner fa-spin"></i>
+              </span>
+            </a>
+            <a class="btn btn-primary m-1" (click)="readLatLng()">
+
+              <span *ngIf="!filterData.is_gps_search">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" stroke="currentColor" fill="currentColor"
+                  viewBox="0 -960 960 960" width="24">
+                  <path
+                    d="M440-42v-80q-125-14-214.5-103.5T122-440H42v-80h80q14-125 103.5-214.5T440-838v-80h80v80q125 14 214.5 103.5T838-520h80v80h-80q-14 125-103.5 214.5T520-122v80h-80Zm40-158q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-120q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm0-80q33 0 56.5-23.5T560-480q0-33-23.5-56.5T480-560q-33 0-56.5 23.5T400-480q0 33 23.5 56.5T480-400Zm0-80Z" />
+                </svg>
+              </span>
+              <span *ngIf="filterData.is_gps_search">
+                <i class="fa fa-spin">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24" stroke="currentColor" fill="currentColor"
+                    viewBox="0 -960 960 960" width="24">
+                    <path
+                      d="M440-42v-80q-125-14-214.5-103.5T122-440H42v-80h80q14-125 103.5-214.5T440-838v-80h80v80q125 14 214.5 103.5T838-520h80v80h-80q-14 125-103.5 214.5T520-122v80h-80Zm40-158q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-120q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm0-80q33 0 56.5-23.5T560-480q0-33-23.5-56.5T480-560q-33 0-56.5 23.5T400-480q0 33 23.5 56.5T480-400Zm0-80Z" />
+                  </svg>
+                </i>
+              </span>
+
+            </a>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+
+    <ul class="w3-ul global-search-res-container w3-border-top w3-border-light-gray border-1 p-2">
+
+      <ng-container *ngIf="searchResult?.length > 0">
+        <li>
+          <div class="ps-2 pe-2">
+            <b>{{ 'Result' | trans}}</b>
+          </div>
+        </li>
+        <li (click)="showSearchItem(item)" class="border-0 result-item w3-round-large"
+          *ngFor="let item of searchResult">
+          <div class="user-select-none d-flex pointer p-2">
+            <div class="flex-shrink-0">
+              <span class="ms-1 me-1 badge {{ item.bg }}">{{ item.subcategory }}</span>
+            </div>
+            <div class="flex-grow-1 me-2">
+              <span>{{ item.title }} </span>
+            </div>
+            <div class="flex-shrink-0">
+              {{item.city}}
+            </div>
+          </div>
+        </li>
+      </ng-container>
+
+      <ng-container *ngIf="!dataExists">
+        <li class="user-select-none w3-block border-bottom border-1 border-light p-1 bg-opacity-10">
+          <div class="text-center p-3 ps-5 pe-5">
+            <div class="row m-0">
+
+            </div>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>
+
+<app-filter-page [filterData]="filterData" [action]="filterSearch"></app-filter-page>

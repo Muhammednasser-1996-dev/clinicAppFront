@@ -1,0 +1,49 @@
+<div class="modal filter-modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">{{ 'Filter' | trans }}</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="w3-ul">
+          <li>
+            <b>{{ 'Choose Category' | trans }}</b>
+            <select [(ngModel)]="filterData.category_id" class="form-select w3-large w3-round-large">
+              <option value="">{{ 'Choose Category' | trans }}</option>
+              <option *ngFor="let item of categories" [value]="item.id">
+                {{item.name}}
+              </option>
+            </select>
+          </li>
+          <li>
+            <b>{{ 'Choose Specialty' | trans }}</b>
+            <select [(ngModel)]="filterData.subcategory_id" class="form-select w3-large w3-round-large">
+              <option value="">{{ 'Choose Specialty' | trans }}</option>
+              <ng-container *ngFor="let item of subcategories">
+                <option *ngIf="filterData.category_id == item.category_id" [value]="item.id">
+                  {{item.name}}
+                </option>
+              </ng-container>
+
+            </select>
+          </li>
+          <li>
+            <b>{{ 'choose location' | trans }}</b>
+            <input (click)="readLatLng()" type="text" readonly value="{{ 'choose location' | trans }}"
+              class="form-control form-control-lg w3-round-large">
+            <b *ngIf="filterData.lat && filterData.lng" class="w3-text-gray">
+              @{{ filterData.lat }},{{ filterData.lng }}
+            </b>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer d-flex">
+        <button (click)="clear()" type="button" class="btn btn-secondary flex-fill">
+          {{ 'clear' | trans }}
+        </button>
+        <button (click)="search()" type="button" class="btn btn-primary flex-fill">{{ 'search' | trans }}</button>
+      </div>
+    </div>
+  </div>
+</div>

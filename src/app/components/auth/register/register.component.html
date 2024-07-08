@@ -1,0 +1,82 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="row m-0">
+
+    <div class="col-lg-6 col-sm-12 text-center">
+      <img src="/assets/imgs/register.png" style="width: 80%" alt="">
+    </div>
+    <div class="col-lg-6 col-sm-12 p-4">
+      <h1 class="text-primary">
+        {{'Welcome Back' | trans}}
+      </h1>
+      <p class="w3-text-gray">
+        {{'Create Account With Us' | trans}}
+      </p>
+      <div class="p-1">
+        <button class="btn btn-lg w3-text-black w3-border w3-border-gray text-center w3-block mb-2">
+          <img style="width: 25px" src="/assets/imgs/g.png" alt=""> {{ 'Log in with Google' | trans }}
+        </button>
+        <button class="btn btn-lg w3-text-black w3-border w3-border-gray text-center w3-block mb-2">
+          <img style="width: 25px" src="/assets/imgs/f.png" alt=""> {{ 'Log in with Facebook' | trans }}
+        </button>
+      </div>
+      <br>
+      <div class="border-1 border-bottom border-black w3-display-container mb-4">
+        <div class="w3-display-topmiddle w3-white badge" style="top: -10px;">
+          {{'Or' | trans}}
+        </div>
+      </div>
+      <div class="p-1">
+        <div class="form-group mb-3">
+          <input type="text" [(ngModel)]="data.username" class="form-control form-control-lg"
+            placeholder="{{'Name' | trans}}">
+        </div>
+        <div class="form-group mb-3">
+          <input type="text" [(ngModel)]="data.phone" class="form-control form-control-lg"
+            placeholder="{{'phone' | trans}}">
+          <p class="w3-text-yellow">
+            <b>{{ 'whatsapp_info_text' | trans }} Ex.96400000000</b>
+          </p>
+        </div>
+        <div class="form-group mb-3">
+          <input type="email" [(ngModel)]="data.email" class="form-control form-control-lg"
+            placeholder="{{'Email' | trans}}">
+          <b *ngIf="emailTxt" class="text-danger">{{emailTxt}}</b>
+        </div>
+        <div class="form-group mb-4">
+          <input type="password" [(ngModel)]="data.password" class="form-control form-control-lg"
+            placeholder="{{'Password' | trans}}">
+        </div>
+        <div class="form-group mb-4">
+          <button (click)="forgetPassword()" class="btn p-0 text-primary">
+            <b>{{'Forgot your password' | trans}}</b>
+          </button>
+        </div>
+        <button (click)="register()" [disabled]="isLoading"
+          class="p-3 btn btn-lg bg-primary w3-block w3-text-white mb-3">
+          <span *ngIf="isLoading">
+            <i class="fa fa-spin fa-spinner"></i>
+          </span>
+          <span *ngIf="!isLoading">{{ 'Submit' | trans }}</span>
+
+        </button>
+
+        <button (click)="login()" class="btn btn-lg w3-block text-primary">
+          {{ 'Sign In' | trans }}
+        </button>
+      </div>
+
+    </div>
+
+  </div><br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+
+
+<app-bottom-nav></app-bottom-nav>

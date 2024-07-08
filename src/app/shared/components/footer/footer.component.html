@@ -1,0 +1,120 @@
+<div class="footer bg-primary p-5 w3-text-white" *ngIf="!isMobile">
+
+  <div class="row m-0">
+
+    <div class="col-3">
+      <img height="60px" src="/assets/imgs/logo_white.png" alt="">
+      <br>
+      <div class="w3-jumbo">
+
+        <div class="d-inline-block m-1">
+          <a href="https://www.facebook.com/raqmonline" target="_blank" class="btn w3-xxlarge w3-text-white">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </div>
+        <div class="d-inline-block m-1">
+          <a href="https://www.instagram.com/rakmonline/" target="_blank" class="btn w3-xxlarge w3-text-white">
+            <i class="fa fa-instagram"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-3">
+
+      <div>
+        <button routerLink="/home" class="btn w3-text-white">
+          {{'Home' | trans}}
+        </button>
+      </div>
+
+      <div>
+        <button routerLink="/search" class="btn w3-text-white">
+          {{'search_doctor' | trans}}
+        </button>
+      </div>
+
+      <div>
+        <button routerLink="/search" class="btn w3-text-white">
+          {{'search_hospital' | trans}}
+        </button>
+      </div>
+
+      <div>
+        <button routerLink="/blog" class="btn w3-text-white">
+          {{'blog' | trans}}
+        </button>
+      </div>
+
+      <div>
+        <button routerLink="/about" class="btn w3-text-white">
+          {{'about_us' | trans}}
+        </button>
+      </div>
+
+      <div>
+        <button routerLink="/contact" class="btn w3-text-white">
+          {{'contact_us' | trans}}
+        </button>
+      </div>
+
+    </div>
+
+    <div class="col-3">
+
+      <div>
+        <button routerLink="/home" class="btn w3-text-white">
+          <b>{{'search_with' | trans}}</b>
+        </button>
+      </div>
+
+      <div *ngFor="let item of categories">
+        <button routerLink="/search" [queryParams]="{category_id: item.id}" class="btn w3-text-white">
+          {{ item.name }}
+        </button>
+      </div>
+
+
+
+    </div>
+
+    <div class="col-3">
+
+      <div>
+        <button routerLink="/home" class="btn w3-text-white">
+          <b>{{'need_help' | trans}}</b>
+        </button>
+      </div>
+
+      <div>
+        <button routerLink="/blog" class="btn w3-text-white">
+          {{'blog' | trans}}
+        </button>
+      </div>
+
+      <div>
+        <button routerLink="/contact" class="btn w3-text-white">
+          {{'contact_us' | trans}}
+        </button>
+      </div>
+
+      <div>
+        <button routerLink="/privacy" class="btn w3-text-white">
+          {{'privacy_policy' | trans}}
+        </button>
+      </div>
+
+      <div>
+        <button routerLink="/terms" class="btn w3-text-white">
+          {{'terms_and_condition' | trans}}
+        </button>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+</div>

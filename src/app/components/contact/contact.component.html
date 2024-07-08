@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<div class="container blog-container pt-5">
+
+  <div class="modal-content w3-modal-content m-auto">
+    <h2 class="text-center">
+      {{'Contact us' | trans}}
+    </h2>
+    <div class="form-group mb-3">
+      <input type="text" [(ngModel)]="data.name" class="form-control form-control-lg w3-round-xlarge"
+        placeholder="{{'Name' | trans}}">
+    </div>
+
+    <div class="form-group mb-3">
+      <input type="text" [(ngModel)]="data.email" class="form-control form-control-lg w3-round-xlarge"
+        placeholder="{{'phone' | trans}}">
+    </div>
+
+    <div class="form-group mb-3">
+      <input type="text" [(ngModel)]="data.subject" class="form-control form-control-lg w3-round-xlarge"
+        placeholder="{{'subject' | trans}}">
+    </div>
+
+    <div class="form-group mb-3">
+      <textarea [(ngModel)]="data.message" class="form-control form-control-lg w3-round-xlarge"
+        placeholder="{{'Message' | trans}}"></textarea>
+    </div>
+
+    <button (click)="send()" class="btn btn-lg bg-primary w3-block w3-text-white mb-3">
+      <span *ngIf="isLoading">
+        <i class="fa fa-spin fa-spinner"></i>
+      </span>
+      <span *ngIf="!isLoading">{{ 'Send' | trans }}</span>
+    </button>
+
+  </div>
+
+</div>

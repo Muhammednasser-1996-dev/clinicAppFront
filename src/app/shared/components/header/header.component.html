@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary w3-white w3-card">
+  <div class="container">
+    <a class="navbar-brand" href="#" routerLink="/home">
+      <img height="40px" src="/assets/imgs/logo.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link {{url == 'home' ? 'text-primary' : ''}}" aria-current="page" href="#" routerLink="/home">
+            <b>{{"home" | trans}}</b>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{url == 'blog' ? 'text-primary' : ''}}" href="#" routerLink="/blog">
+            <b>{{"blog" | trans}}</b>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{url == 'about' ? 'text-primary' : ''}}" href="#" routerLink="/about">
+            <b>{{"about_us" | trans}}</b>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{url == '/contact' ? 'text-primary' : ''}}" href="#" routerLink="/contact">
+            <b>{{"contact_us" | trans}}</b>
+          </a>
+        </li>
+      </ul>
+      <div class="d-flex">
+
+        <div class="flex-fill">
+          <div class="dropdown text-start">
+            <ng-container *ngIf="!isLogin">
+              <button (click)="login()" class="btn btn-primary">
+                {{'login' | trans}}
+              </button>
+            </ng-container>
+            <ng-container *ngIf="isLogin">
+              <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img [src]="user.image_url?? '/assets/imgs/user.png'" alt="mdo" width="32" height="32"
+                  class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small" style="">
+                <li><a (click)="profile()" class="dropdown-item pointer">{{'Profile' | trans}}</a></li>
+                <li><a (click)="favourite()" class="dropdown-item pointer">{{'Favourite' | trans}}</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a (click)="logout()" class="dropdown-item pointer">{{'Logout' | trans}}</a></li>
+              </ul>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="align-self-end">
+          <button (click)="changeLanguage()" class="ms-2 me-2 btn btn-outline-primary w3-large">
+            {{locale == 'ar'? 'En' : 'ع'}}
+          </button>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</nav>

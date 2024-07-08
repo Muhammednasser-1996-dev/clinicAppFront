@@ -1,0 +1,73 @@
+<app-header></app-header>
+
+<div class="container mb-5">
+  <div class="row m-0">
+
+    <div class="col-lg-6 col-sm-12 text-center">
+      <img src="/assets/imgs/login.png" style="width: 80%" alt="">
+    </div>
+    <div class="col-lg-6 col-sm-12 p-4">
+      <h1 class="text-primary">
+        {{'Welcome Back' | trans}}
+      </h1>
+      <p class="w3-text-gray">
+        {{'Login With Us And Search About Your Contacts' | trans}}
+      </p>
+      <div class="p-1">
+        <a [href]="backendUrl + '/auth/g/redirect'"
+          class="btn btn-lg w3-text-black w3-border w3-border-gray text-center w3-block mb-2">
+          <img style="width: 25px" src="/assets/imgs/g.png" alt=""> {{ 'Log in with Google' | trans }}
+        </a>
+
+        <a [href]="backendUrl + '/auth/f/redirect'"
+          class="btn btn-lg w3-text-black w3-border w3-border-gray text-center w3-block mb-2">
+          <img style="width: 25px" src="/assets/imgs/f.png" alt=""> {{ 'Log in with Facebook' | trans }}
+        </a>
+      </div>
+      <br>
+      <div class="border-1 border-bottom border-black w3-display-container mb-4">
+        <div class="w3-display-topmiddle w3-white badge" style="top: -10px;">
+          {{'Or' | trans}}
+        </div>
+      </div>
+      <div class="p-1">
+        <div class="form-group mb-3">
+          <input type="phone" [(ngModel)]="data.phone" class="form-control form-control-lg"
+            placeholder="{{'phone' | trans}}">
+          <p class="w3-text-yellow">
+            <b>{{ 'whatsapp_info_text' | trans }} Ex.96400000000</b>
+          </p>
+        </div>
+        <div class="form-group mb-4">
+          <input type="password" [(ngModel)]="data.password" class="form-control form-control-lg"
+            placeholder="{{'Password' | trans}}">
+        </div>
+        <div class="form-group mb-4">
+          <button (click)="forgetPassword()" class="btn p-0 text-primary">
+            <b>{{'Forgot your password' | trans}}</b>
+          </button>
+        </div>
+        <button [disabled]="isLoading" (click)="login()" class="btn btn-lg bg-primary w3-block w3-text-white mb-3">
+          <span *ngIf="isLoading">
+            <i class="fa fa-spin fa-spinner"></i>
+          </span>
+          <span *ngIf="!isLoading">{{ 'Login' | trans }}</span>
+        </button>
+        <button (click)="register()" class="btn btn-lg w3-block text-primary">
+          {{ 'Sign up' | trans }}
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+
+<app-bottom-nav></app-bottom-nav>

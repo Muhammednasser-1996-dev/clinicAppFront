@@ -1,0 +1,63 @@
+<h1 mat-dialog-title>
+
+  {{ 'Share Contact' | trans }}
+
+</h1>
+<div mat-dialog-content style="height: 250px">
+
+  <div class="w3-block text-center">
+
+    <div class="d-inline-block m-1">
+      <button class="btn share-btn" data-sharer="facebook" data-hashtag="hashtag" data-url="">
+        <img src="/assets/imgs/facebook.svg" width="48px" alt="">
+      </button>
+    </div>
+
+    <div class="d-inline-block m-1">
+      <button class="btn share-btn" data-sharer="twitter" data-url="">
+        <img src="/assets/imgs/twitter.svg" width="48px" alt="">
+      </button>
+    </div>
+
+    <div class="d-inline-block m-1">
+      <button class="btn share-btn" data-sharer="whatsapp" data-hashtag="hashtag" data-url="">
+        <img src="/assets/imgs/whatsapp.png" width="48px" alt="">
+      </button>
+    </div>
+
+    <div class="d-inline-block m-1">
+      <button class="btn share-btn" data-sharer="telegram" data-hashtag="hashtag" data-url="">
+        <img src="/assets/imgs/telegram.webp" width="48px" alt="">
+      </button>
+    </div>
+
+
+  </div>
+  <br>
+  <div class="p-2">
+    <img src="/assets/imgs/dividor.png" style="width: 100%" alt="">
+  </div>
+  <p class="text-center">
+    <b>{{ 'Copy Selected item link' | trans }}</b>
+  </p>
+  <div class="w3-display-container m-0">
+    <input readonly value="{{contact.contact_url}}" type="text" class=" form-control w3-light-gray p-2">
+    <div class="w3-display-topleft w3-">
+      <div class="float-end">
+        <button (click)="copy()" class="btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path
+              d="M10.667 13.3334C10.667 12.6261 10.9479 11.9478 11.448 11.4477C11.9481 10.9476 12.6264 10.6667 13.3337 10.6667H24.0003C24.7076 10.6667 25.3858 10.9476 25.8859 11.4477C26.386 11.9478 26.667 12.6261 26.667 13.3334V24C26.667 24.7073 26.386 25.3855 25.8859 25.8856C25.3858 26.3857 24.7076 26.6667 24.0003 26.6667H13.3337C12.6264 26.6667 11.9481 26.3857 11.448 25.8856C10.9479 25.3855 10.667 24.7073 10.667 24V13.3334Z"
+              stroke="#D65DB1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M21.3335 10.6667V8.00001C21.3335 7.29277 21.0525 6.61449 20.5524 6.11439C20.0524 5.61429 19.3741 5.33334 18.6668 5.33334H8.00016C7.29292 5.33334 6.61464 5.61429 6.11454 6.11439C5.61445 6.61449 5.3335 7.29277 5.3335 8.00001V18.6667C5.3335 19.3739 5.61445 20.0522 6.11454 20.5523C6.61464 21.0524 7.29292 21.3333 8.00016 21.3333H10.6668"
+              stroke="#D65DB1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

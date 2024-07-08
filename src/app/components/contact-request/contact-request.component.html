@@ -1,0 +1,68 @@
+<div mat-dialog-title>
+  <button class="btn" mat-dialog-close="">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <path
+        d="M16.0003 30.3334C8.09366 30.3334 1.66699 23.9067 1.66699 16C1.66699 8.09335 8.09366 1.66669 16.0003 1.66669C23.907 1.66669 30.3337 8.09335 30.3337 16C30.3337 23.9067 23.907 30.3334 16.0003 30.3334ZM16.0003 3.66669C9.20033 3.66669 3.66699 9.20002 3.66699 16C3.66699 22.8 9.20033 28.3334 16.0003 28.3334C22.8003 28.3334 28.3337 22.8 28.3337 16C28.3337 9.20002 22.8003 3.66669 16.0003 3.66669Z"
+        fill="#9AA0A6" />
+      <path
+        d="M12.2271 20.7733C11.9738 20.7733 11.7205 20.68 11.5205 20.48C11.1338 20.0933 11.1338 19.4533 11.5205 19.0666L19.0671 11.52C19.4538 11.1333 20.0938 11.1333 20.4805 11.52C20.8671 11.9066 20.8671 12.5466 20.4805 12.9333L12.9338 20.48C12.7471 20.68 12.4805 20.7733 12.2271 20.7733Z"
+        fill="#9AA0A6" />
+      <path
+        d="M19.7738 20.7733C19.5205 20.7733 19.2671 20.68 19.0671 20.48L11.5205 12.9333C11.1338 12.5466 11.1338 11.9066 11.5205 11.52C11.9071 11.1333 12.5471 11.1333 12.9338 11.52L20.4805 19.0666C20.8671 19.4533 20.8671 20.0933 20.4805 20.48C20.2805 20.68 20.0271 20.7733 19.7738 20.7733Z"
+        fill="#9AA0A6" />
+    </svg>
+  </button>
+</div>
+
+<div mat-dialog-content style="max-width: 400px">
+
+  <div class="text-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="90" height="78" viewBox="0 0 90 78" fill="none">
+      <path
+        d="M76.5 27C80.0804 27 83.5142 28.4223 86.0459 30.9541C88.5777 33.4858 90 36.9196 90 40.5V54C90 57.5804 88.5777 61.0142 86.0459 63.5459C83.5142 66.0777 80.0804 67.5 76.5 67.5V71.847C76.5 76.617 70.938 79.2225 67.275 76.167L56.871 67.5H45C41.4196 67.5 37.9858 66.0777 35.4541 63.5459C32.9223 61.0142 31.5 57.5804 31.5 54V40.5C31.5 36.9196 32.9223 33.4858 35.4541 30.9541C37.9858 28.4223 41.4196 27 45 27H76.5ZM63 0C66.5804 0 70.0142 1.42232 72.5459 3.95406C75.0777 6.4858 76.5 9.91958 76.5 13.5V18H40.5C35.7261 18 31.1477 19.8964 27.7721 23.2721C24.3964 26.6477 22.5 31.2261 22.5 36V54C22.5 58.698 24.3 62.982 27.252 66.186L22.5 69.75C18.792 72.531 13.5 69.885 13.5 65.25V58.5C9.91958 58.5 6.4858 57.0777 3.95406 54.5459C1.42232 52.0142 0 48.5804 0 45V13.5C0 9.91958 1.42232 6.4858 3.95406 3.95406C6.4858 1.42232 9.91958 0 13.5 0H63Z"
+        fill="#845EC2" />
+    </svg>
+  </div>
+  <h1 class="text-center p-1">
+    {{ 'Please Enter Correct Data' | trans }}
+  </h1>
+
+  <div class="row m-0">
+
+    <div class="col-6 p-1">
+      <input type="text" [(ngModel)]="request.name" class="form-control p-2" placeholder="{{'Name' | trans}}">
+    </div>
+
+    <div class="col-6 p-1">
+      <input type="text" [(ngModel)]="request.phone" class="form-control p-2" placeholder="{{'Phone' | trans}}">
+    </div>
+
+    <div class="col-12 p-1">
+      <input type="text" [(ngModel)]="request.whatsapp" class="form-control p-2" placeholder="{{'address' | trans}}">
+    </div>
+
+    <div class="col-12 p-1">
+      <select [(ngModel)]="request.subcategory_id" class="form-select p-2">
+        <option selected [value]="null">{{ 'choose_specialty' | trans }}</option>
+        <option *ngFor="let item of subcategories" [value]="item.id">{{item.name}}</option>
+      </select>
+    </div>
+
+    <div class="col-12 p-1">
+      <textarea type="text" [(ngModel)]="request.description" class="form-control p-2"
+        placeholder="{{'notes' | trans}}">
+        </textarea>
+    </div>
+
+    <div class="col-12 p-1">
+      <button [disabled]="isLoading" (click)="sendRequest()" class="btn btn-primary w3-block p-2">
+        <span *ngIf="isLoading">
+          <i class="fa fa-spin fa-spinner"></i>
+        </span>
+        <span *ngIf="!isLoading">{{ 'Send Message To Admin' | trans }}</span>
+      </button>
+    </div>
+
+  </div>
+
+</div>

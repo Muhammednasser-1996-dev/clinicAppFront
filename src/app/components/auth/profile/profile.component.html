@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+<div class="container">
+  <br>
+  <br>
+  <div class="modal-sm w3-modal-content m-auto">
+
+    <div class="text-center">
+      <h1 class="text-primary">
+        {{'Update Profile Info' | trans}}
+      </h1>
+      <br>
+      <div id="form" class="p-1 m-auto">
+        <div class="p-3 mb-4">
+          <div class="col-12 p-1 text-center mb-3">
+            <img [src]="data.image_url?? '/assets/imgs/user.png'" alt="">
+            <div>
+              <button mat-button class="bg-primary mt-2" (click)="imageInput.click()">
+                <div class="app-i-c">
+                  <div class="app-i app-i-upload app-i-c-white"></div>
+                </div>
+              </button>
+            </div>
+            <input accept="image/png, image/jpeg" (change)="util.loadImage($event, 'image', data)" type="file"
+              class="hidden" #imageInput>
+          </div>
+          <div class="form-group mb-3">
+            <input type="text" [(ngModel)]="data.username" class="form-control form-control-lg"
+              placeholder="{{'Name' | trans}}">
+          </div>
+          <div class="form-group mb-3">
+            <input type="text" [(ngModel)]="data.phone" class="form-control form-control-lg"
+              placeholder="{{'phone' | trans}}">
+          </div>
+          <div class="form-group mb-3">
+            <input type="email" readonly [(ngModel)]="data.email" class="w3-light-gray form-control form-control-lg"
+              placeholder="{{'Email' | trans}}">
+          </div>
+          <div class="form-group mb-4">
+            <input type="password" [(ngModel)]="data.password" class="form-control form-control-lg"
+              placeholder="{{'Password' | trans}}">
+          </div>
+          <div class="w3-block mt-3">
+            <button (click)="update()" [disabled]="isLoading"
+              class="p-3 btn btn-lg bg-primary w3-block w3-text-white mb-3">
+              <span *ngIf="isLoading">
+                <i class="fa fa-spin fa-spinner"></i>
+              </span>
+              <span *ngIf="!isLoading">{{ 'update' | trans }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div><br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+
+<app-bottom-nav></app-bottom-nav>

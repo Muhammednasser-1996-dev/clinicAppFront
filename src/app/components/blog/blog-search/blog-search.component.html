@@ -1,0 +1,46 @@
+<div class="search-input w3-round-xxlarge m-auto mb-5">
+  <div class="d-block search-input-container w3-round-xlarge w3-white" (blur)="toggleSearch(false)">
+    <div class="m-0">
+      <div class="d-flex">
+        <div class="" style="width: 40px">
+          <div class="cursor w3-text-gray p-3" (click)="show? closeSearch() : null">
+            <div class="fa {{ show? 'fa-close' : 'fa-search' }}"></div>
+          </div>
+        </div>
+        <div class="flex-fill pt-2">
+          <input #globalSearchInput (keyup)="search(globalSearchInput.value)" [(ngModel)]="searchValue"
+            placeholder="{{ 'advanced search' | trans }}" class="w3-input w3-round-xlarge" (click)="toggleSearch()" />
+        </div>
+        <div class="justify-content-end p-1">
+          <ng-container *ngIf="isMobile">
+            <div class="input-group m-1" style="width: 100px">
+              <button (click)="navigateToResultPage()" class="btn btn-primary" type="button">
+                <i class="fa fa-search"></i>
+              </button>
+              <button (click)="filterPage()" class="btn btn-primary" type="button">
+                <i class="fa fa-filter"></i>
+              </button>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!isMobile">
+
+            <a class="btn btn-primary m-1" (click)="navigateToResultPage()">
+              <span *ngIf="!filterData.is_loading">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </span>
+              <span *ngIf="filterData.is_loading">
+                <i class="fa fa-spinner fa-spin"></i>
+              </span>
+            </a>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+<div class="m-auto modal-lg mt-5" style="height: 99vh">
+  <div class="text-center">
+    <img src="/assets/imgs/logo.png" width="100px" alt="" />
+    <div class="w3-large text-secondary"></div>
+    <p class="p-4">
+      <b>{{ "best search engine for contacts" | trans }}</b>
+    </p>
+
+    <br />
+  </div>
+  <div class="w3-block p-3">
+    <app-search-input [filterData]="filterData"></app-search-input>
+    <br />
+    <div *ngIf="!isMobile" class="w3-block d-flex">
+      <div class="flex-fill m-1">
+        <select
+          [(ngModel)]="filterData.category_id"
+          class="form-select my-shadow w3-large"
+        >
+          <option value="0">{{ "Choose Category" | trans }}</option>
+          <option *ngFor="let item of categories" [value]="item.id">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+      <div class="flex-fill m-1">
+        <select
+          [(ngModel)]="filterData.subcategory_id"
+          class="form-select my-shadow w3-large"
+        >
+          <option value="0">{{ "Choose Specialty" | trans }}</option>
+          <ng-container *ngFor="let item of subcategories">
+            <option
+              *ngIf="filterData.category_id == item.category_id"
+              [value]="item.id"
+            >
+              {{ item.name }}
+            </option>
+          </ng-container>
+        </select>
+      </div>
+      <!-- cities -->
+      <div class="flex-fill m-1">
+        <select
+        [(ngModel)]="filterData.cityId"
+        class="form-select my-shadow w3-large"
+        >
+        <option value="0">{{ "Choose City" | trans }}</option>
+        <ng-container *ngFor="let city of cities">
+            *ngIf="filterData.cityId == city.city_id"
+            <option
+              [value]="city.city_id"
+            >
+              {{ city.city }}
+            </option>
+          </ng-container>
+        </select>
+      </div>
+      <!-- cities -->
+    </div>
+  </div>
+</div>
+
+<app-bottom-nav></app-bottom-nav>
